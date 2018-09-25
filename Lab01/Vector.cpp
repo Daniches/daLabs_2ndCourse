@@ -14,7 +14,7 @@ public:
 		sizeReserved_ = DEFAULT_ARRAY_SIZE;
 
 		size_ = 0;
-		
+
 	}
 
 	//Constructor with specified size
@@ -54,7 +54,7 @@ public:
 	/*
 	void ReserveDouble() {
 		arrType *newArray = new arrType[sizeReserved_ * 2];
-		
+
 		for (int i = 0; i < size_; i++) {
 			newArray[i] = array_[i];
 		}
@@ -66,7 +66,7 @@ public:
 	*/
 	void ReserveDouble() {
 		arrType *newArray = array_;
-		array_= new arrType[sizeReserved_ * 2];
+		array_ = new arrType[sizeReserved_ * 2];
 
 		for (int i = 0; i < size_; i++) {
 			array_[i] = newArray[i];
@@ -76,6 +76,7 @@ public:
 		sizeReserved_ *= 2;
 	}
 
+	/*
 	void ReserveHalf() {
 		if (sizeReserved_ > DEFAULT_ARRAY_SIZE && size_ <= sizeReserved_ / 2) {
 			arrType *newArray = new arrType[sizeReserved_ / 2];
@@ -86,6 +87,25 @@ public:
 
 			array_ = newArray;
 			delete[] array_;
+			sizeReserved_ /= 2;
+		}
+	}
+
+	df
+	*/
+
+
+	void ReserveHalf() {
+		if (sizeReserved_ > DEFAULT_ARRAY_SIZE && size_ <= sizeReserved_ / 2) {
+			arrType *newArray = array_;
+			array_ = new arrType[sizeReserved_ / 2];
+
+			for (int i = 0; i < size_; i++) {
+				array_[i] = newArray[i];
+			}
+
+
+			delete[] newArray;
 			sizeReserved_ /= 2;
 		}
 	}
@@ -110,7 +130,7 @@ public:
 
 	void Delete(int position) {
 		for (int i = position; i < size_ - 1; i++) {
-			array_[position] = array_[position + 1];
+			array_[i] = array_[i + 1];
 		}
 		size_--;
 		if (size_ <= sizeReserved_ / 2) {
@@ -132,22 +152,28 @@ public:
 		std::cout << "Size: " << size_ << ", reserved: " << sizeReserved_ << std::endl;
 	}
 
-	
+	int Size() {
+		return size_;
+	}
+
+
+
+
 
 
 private:
 	arrType *array_;
-	unsigned long long size_;
-	unsigned long long sizeReserved_;
+	int size_;
+	int sizeReserved_;
 };
 
 
 int main() {
-	TVector <int> wow(0,0);
+	TVector <int> wow(0, 0);
 
 	int n;
 	std::cin >> n;
-	
+
 	for (int i = 0; i < n; i++) {
 		int k;
 		std::cin >> k;
@@ -158,7 +184,7 @@ int main() {
 	}
 
 	for (int i = 0; i < n; i++) {
-		wow.Delete(0);
+		wow.Delete(wow.Size() / 2);
 		wow.Information();
 		wow.Print();
 	}
