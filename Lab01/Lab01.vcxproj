@@ -146,7 +146,9 @@
     <ClCompile Include="Lab01.cpp" />
     <ClCompile Include="RadixSort.cpp" />
     <ClCompile Include="TString.cpp" />
+    <ClCompile Include="TString2.cpp" />
     <ClCompile Include="TVector.cpp" />
+    <ClCompile Include="TVector2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

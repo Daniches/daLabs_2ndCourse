@@ -1,24 +1,28 @@
-#include "TVector.cpp"
-#include "TString.cpp"
+#include "TString2.cpp"
+#include "TVector2.cpp"
 #include <iostream>
 
 int main() {
 	//TVector <int> wow(0);
 
 	//TVector <char> str(0);
+
+	data e,e2;
+	TVector lol;
+
+	e.key.Input(4);
+	e.value.Input(4);
+	lol.PushBack(e);
 	
-	TString str;
-	TString str2;
+	e2.key.Input(4);
+	e2.value.Input(4);
+	lol.PushBack(e2);
 
-	str.Input(1);
-	str.Print();
 
-	str2.Input(1);
-	str2.Print();
-
-	TVector <TString> wuf(0);
-	wuf.PushBack(str);
-	wuf.PushBack(str2);
+	lol.Show(0).key.Print();
+	lol.Show(0).value.Print();
+	lol.Show(1).key.Print();
+	lol.Show(1).value.Print();
 
 	
 }
