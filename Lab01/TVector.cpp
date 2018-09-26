@@ -1,63 +1,50 @@
-#ifndef TVECTOR
-#define TVECTOR
-
 #include <iostream>
+#include "TString.h"
+#include "TVector.h"
 
-
-
-const int DEFAULT_ARRAY_SIZE = 4;
-
-template <typename arrType>
-class TVector {
-
-public:
-
-	//Constructor without arguments
-	TVector() {
-		array_ = new arrType[DEFAULT_ARRAY_SIZE];
-		sizeReserved_ = DEFAULT_ARRAY_SIZE;
+TVector::TVector() {
+	try {
+		array_ = new data[DEFAULT_VECTOR_SIZE];
+		sizeReserved_ = DEFAULT_VECTOR_SIZE;
 
 		size_ = 0;
-
 	}
 
-	//Constructor with specified size
-	TVector(unsigned long long sizeSpecified) {
-		array_ = new arrType[DEFAULT_ARRAY_SIZE];
-		sizeReserved_ = DEFAULT_ARRAY_SIZE;
+	catch (...) {
+		std::cout << "ERROR: Cannot create vector due to lack of memory.";
+		exit(0);
+	}
+};
+
+TVector::TVector(int sizeSpecified) {
+	try { 
+		array_ = new data[DEFAULT_VECTOR_SIZE];
+		sizeReserved_ = DEFAULT_VECTOR_SIZE;
 
 		while (sizeReserved_ < sizeSpecified) {
 			ReserveDouble();
 		}
-
-		size_ = sizeSpecified;
-	}
-
-	//Constructor with specified size and elements
-	TVector(unsigned long long sizeSpecified, arrType element) {
-		array_ = new arrType[DEFAULT_ARRAY_SIZE];
-		sizeReserved_ = DEFAULT_ARRAY_SIZE;
-
-		while (sizeReserved_ < sizeSpecified) {
-			ReserveDouble();
-		}
-
 		size_ = sizeSpecified;
 
-		for (int i = 0; i < size_; i++) {
-			array_[i] = element;
+		for (int i = 0; i < sizeSpecified; i++) {
+			data e;
+			Change(i, e);
 		}
 	}
-
-	//Destructor
-	~TVector() {
-		std::cout << "hi there";
-		delete[] array_;
+	catch (...) {
+		std::cout << "ERROR: Cannot create vector due to lack of memory.";
+		exit(0);
 	}
+};
 
-	void ReserveDouble() {
-		arrType *newArray = array_;
-		array_ = new arrType[sizeReserved_ * 2];
+TVector::~TVector() {
+	delete[] array_;
+};
+
+void TVector::ReserveDouble() {
+	try {
+		data *newArray = array_;
+		array_ = new data[sizeReserved_ * 2];
 
 		for (int i = 0; i < size_; i++) {
 			array_[i] = newArray[i];
@@ -66,74 +53,47 @@ public:
 		delete[] newArray;
 		sizeReserved_ *= 2;
 	}
-
-
-	void ReserveHalf() {
-		if (sizeReserved_ > DEFAULT_ARRAY_SIZE && size_ <= sizeReserved_ / 2) {
-			arrType *newArray = array_;
-			array_ = new arrType[sizeReserved_ / 2];
-
-			for (int i = 0; i < size_; i++) {
-				array_[i] = newArray[i];
-			}
-
-
-			delete[] newArray;
-			sizeReserved_ /= 2;
-		}
+	catch (...) {
+		std::cout << "ERROR: Cannot resize vector due to lack of memory.";
+		exit(0);
 	}
-
-	void PushBack(const arrType pushedValue) {
-		if (size_ == sizeReserved_) {
-			ReserveDouble();
-		}
-		array_[size_] = pushedValue;
-		size_++;
-	}
-
-	void Swap(int first, int second) {
-		arrType tmp = array_[first];
-		array_[first] = array_[second];
-		array_[second] = array_[first];
-	}
-
-	void Change(int position, arrType value) {
-		array_[position] = value;
-	}
-
-	void Delete(int position) {
-		for (int i = position; i < size_ - 1; i++) {
-			array_[i] = array_[i + 1];
-		}
-		size_--;
-		if (size_ <= sizeReserved_ / 2) {
-			ReserveHalf();
-		}
-	}
-
-	void Print() {
-		for (int i = 0; i < size_; i++) {
-			std::cout << array_[i] << std::endl;
-		}
-	}
-
-	arrType Show(int position) {
-		return array_[position];
-	}
-
-	void Information() {
-		std::cout << "Size: " << size_ << ", reserved: " << sizeReserved_ << std::endl;
-	}
-
-	int Size() {
-		return size_;
-	}
-
-
-private:
-	arrType *array_;
-	int size_;
-	int sizeReserved_;
 };
 
-#endif // !TVECTOR
+void TVector::PushBack(const data pushedValue) {
+	if (size_ == sizeReserved_) {
+		ReserveDouble();
+	}
+	array_[size_] = pushedValue;
+	size_++;
+};
+
+void TVector::Swap(int first, int second) {
+	data tmp = array_[first];
+	array_[first] = array_[second];
+	array_[second] = tmp;
+};
+
+void TVector::Change(int position, data value) {
+	array_[position] = value;
+};
+
+void TVector::Print() {
+	for (int i = 0; i < size_; i++) {
+		array_[i].key.Print();
+		std::cout << ' ';
+		array_[i].value.Print();
+		std::cout << std::endl;
+	}
+};
+
+data TVector::Show(int position) {
+	return array_[position];
+};
+
+void TVector::Information() {
+	std::cout << "Size: " << size_ << ", reserved: " << sizeReserved_ << std::endl;
+};
+
+int TVector::Size() {
+	return size_;
+};

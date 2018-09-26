@@ -15,23 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TVector.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
     <ClCompile Include="Lab01.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="RadixSort.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="TVectorOld.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="TVector.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
     <ClCompile Include="TString.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="TString2.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TString.h">
       <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
-    <ClCompile Include="TVector2.cpp">
+    </ClInclude>
+    <ClInclude Include="TVector.h">
       <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>

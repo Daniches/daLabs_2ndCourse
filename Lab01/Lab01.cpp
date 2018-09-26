@@ -1,6 +1,6 @@
 #include <iostream>
-#include "TString2.cpp"
-#include "TVector2.cpp"
+#include "TString.h"
+#include "TVector.cpp"
 const int MAX_NUMBER = 16;
 
 int CharValue(char c) {
@@ -45,30 +45,35 @@ void CountingSort(TVector& arr, int position) {
 
 }
 
+void RadixSort(TVector& arr) {
+	for (int i = arr.Show(0).key.Size() - 1; i >= 0; i--) {
+		CountingSort(arr, i);
+	}
+
+}
+
 int main() {
 
-	TVector lol;
+	TVector arrData;
 
-	for (int i = 0; i < 3; i++) {
+	while(true) {
 		data e;
-		e.key.Input();
-		e.value.Input();
-		lol.PushBack(e);
+		if (!e.key.InputMD5()) { 
+			break;
+		}
+		if (!e.value.Input()) {
+			arrData.PushBack(e);
+			break;
+		}
+		arrData.PushBack(e);
 	}
 
-	for (int i = 0; i < 3; i++) {
-		lol.Show(i).key.Print();
-		std::cout << ' ';
-		lol.Show(i).value.Print();
-		std::cout << std::endl;
-	}
+	RadixSort(arrData);
 
-	CountingSort(lol, 0);
-
-	for (int i = 0; i < 3; i++) {
-		lol.Show(i).key.Print();
+	for (int i = 0; i < arrData.Size(); i++) {
+		arrData.Show(i).key.Print();
 		std::cout << ' ';
-		lol.Show(i).value.Print();
+		arrData.Show(i).value.Print();
 		std::cout << std::endl;
 	}
 
