@@ -19,7 +19,7 @@ public:
 	}
 
 	//Constructor with specified size
-	TString(unsigned long long sizeSpecified) {
+	TString(int sizeSpecified) {
 		string_ = new char[DEFAULT_STRING_SIZE];
 		sizeReserved_ = DEFAULT_STRING_SIZE;
 
@@ -73,11 +73,21 @@ public:
 	}
 
 	void Input(int size) {
-
 		char c;
 		for (int i = 0; i < size; i++) {
 			std::cin >> c;
 			PushBack(c);
+		}
+	}
+	void Input() {
+		char c;
+		while (size_ < 1) {
+			while (c = std::cin.get()) {
+				if (c == '\t' || c == '\n' || c == ' ') {
+					break;
+				}
+				PushBack(c);
+			}
 		}
 	}
 

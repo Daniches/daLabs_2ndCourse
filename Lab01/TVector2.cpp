@@ -24,6 +24,26 @@ public:
 
 	}
 
+	TVector(int sizeSpecified) {
+		std::cout << "hi " << sizeSpecified << std::endl;
+		array_ = new data[DEFAULT_VECTOR_SIZE];
+		sizeReserved_ = DEFAULT_VECTOR_SIZE;
+
+		while (sizeReserved_ < sizeSpecified) {
+			ReserveDouble();
+		}
+		size_ = sizeSpecified;
+
+		for (int i = 0; i < sizeSpecified; i++) {
+			data e;
+			Change(i, e);
+
+		}
+		
+		
+
+	}
+
 	//Destructor
 	~TVector() {
 		//std::cout << "hi there";
@@ -53,7 +73,7 @@ public:
 	void Swap(int first, int second) {
 		data tmp = array_[first];
 		array_[first] = array_[second];
-		array_[second] = array_[first];
+		array_[second] = tmp;
 	}
 
 	void Change(int position, data value) {
