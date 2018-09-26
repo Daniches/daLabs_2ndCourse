@@ -143,7 +143,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Lab01.cpp" />
+    <ClCompile Include="RadixSort.cpp" />
+    <ClCompile Include="TString.cpp" />
+    <ClCompile Include="TVector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

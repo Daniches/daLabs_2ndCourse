@@ -1,5 +1,9 @@
-// Vector, but pretty bad
+#ifndef TVECTOR
+#define TVECTOR
+
 #include <iostream>
+
+
 
 const int DEFAULT_ARRAY_SIZE = 4;
 
@@ -51,19 +55,6 @@ public:
 		delete[] array_;
 	}
 
-	/*
-	void ReserveDouble() {
-		arrType *newArray = new arrType[sizeReserved_ * 2];
-
-		for (int i = 0; i < size_; i++) {
-			newArray[i] = array_[i];
-		}
-
-		array_ = newArray;
-		delete[] array_;
-		sizeReserved_ *= 2;
-	}
-	*/
 	void ReserveDouble() {
 		arrType *newArray = array_;
 		array_ = new arrType[sizeReserved_ * 2];
@@ -75,24 +66,6 @@ public:
 		delete[] newArray;
 		sizeReserved_ *= 2;
 	}
-
-	/*
-	void ReserveHalf() {
-		if (sizeReserved_ > DEFAULT_ARRAY_SIZE && size_ <= sizeReserved_ / 2) {
-			arrType *newArray = new arrType[sizeReserved_ / 2];
-
-			for (int i = 0; i < size_; i++) {
-				*newArray[i] = *array_[i];
-			}
-
-			array_ = newArray;
-			delete[] array_;
-			sizeReserved_ /= 2;
-		}
-	}
-
-	df
-	*/
 
 
 	void ReserveHalf() {
@@ -157,35 +130,10 @@ public:
 	}
 
 
-
-
-
-
 private:
 	arrType *array_;
 	int size_;
 	int sizeReserved_;
 };
 
-
-int main() {
-	TVector <int> wow(0, 0);
-
-	int n;
-	std::cin >> n;
-
-	for (int i = 0; i < n; i++) {
-		int k;
-		std::cin >> k;
-		wow.PushBack(k);
-		wow.Information();
-		std::cout << wow.Show(i) << std::endl;
-		wow.Print();
-	}
-
-	for (int i = 0; i < n; i++) {
-		wow.Delete(wow.Size() / 2);
-		wow.Information();
-		wow.Print();
-	}
-}
+#endif // !TVECTOR
