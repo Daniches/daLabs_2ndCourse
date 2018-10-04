@@ -9,7 +9,7 @@ struct data {
 	TString value;
 };
 
-const int DEFAULT_VECTOR_SIZE = 4;
+const int DEFAULT_VECTOR_SIZE = 32;
 
 class TVector {
 public:
