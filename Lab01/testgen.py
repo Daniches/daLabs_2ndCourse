@@ -22,9 +22,11 @@ testsNumber = 10
 fullStrings = 0
 
 if len(sys.argv) > 1:
-    k = 1 
-    while k <= len(sys.argv):
-        currentFlag = sys.argv[k].split('=')
+    for argument in (sys.argv[1:]):
+    #k = 1 
+    #while k < len(sys.argv):
+        #currentFlag = sys.argv[k].split('=')
+        currentFlag = argument.split('=')
         if currentFlag[0] == "--lines" :
             linesNumber = int(currentFlag[1])
         elif currentFlag[0] == "--tests":
@@ -38,12 +40,14 @@ if len(sys.argv) > 1:
             print("\t--tests=NUM\tset number of tests to NUM")
             print("\t-f, --f    \tmake strings always contain 2048 symbols")
             print("\t-h, --h    \ts\display this help and exit")
+            sys.exit()
+        #k+=1
             
 
 for test in range (testsNumber):
     outputFile=open("Tests/{}.t".format(test),'w')
     for line in range (linesNumber):
-        print("{}\t{}".format(GenerateMD5Sum(), GenerateString(fullStrings)))
+        #print("{}\t{}".format(GenerateMD5Sum(), GenerateString(fullStrings)))
         outputFile.write("{}\t{}\n".format(GenerateMD5Sum(), GenerateString(fullStrings)))
         
 
