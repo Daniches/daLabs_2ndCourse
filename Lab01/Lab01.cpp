@@ -1,6 +1,6 @@
 #include <iostream>
 #include "TString.h"
-#include "TVector.cpp"
+#include "TVector.h"
 const int MAX_NUMBER = 16;
 
 int CharValue(char c) {
@@ -53,13 +53,21 @@ void RadixSort(TVector& arr) {
 }
 
 int main() {
+	std::ios::sync_with_stdio(0);
+	std::cin.tie(0);
 
 	TVector arrData;
 
 	while(true) {
 		data e;
 		if (!e.key.InputMD5()) { 
-			break;
+			if (e.key.Size() > 0) {
+				std::cout << "ERROR: Invalid input. Each string must contatin MD5Sum, TAB character and string.";
+				exit(0);
+			}
+			else {
+				break;
+			}
 		}
 		if (!e.value.Input()) {
 			arrData.PushBack(e);
@@ -72,9 +80,10 @@ int main() {
 
 	for (int i = 0; i < arrData.Size(); i++) {
 		arrData.Show(i).key.Print();
-		std::cout << ' ';
+		std::cout << '\t';
 		arrData.Show(i).value.Print();
-		std::cout << std::endl;
+		std::cout << '\n';
+		
 	}
 
 }

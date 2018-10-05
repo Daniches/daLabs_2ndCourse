@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-const int DEFAULT_STRING_SIZE = 8;
+const int DEFAULT_STRING_SIZE = 32;
 const char BREAK_CODE = 26;
-
+const int MD5SUM_DIGITS = 32;
 bool isAllowedNumber(char c);
 
 class TString {
@@ -19,12 +19,10 @@ public:
 	void Input(int);
 	bool Input();
 	bool InputMD5();
-	void Swap(int, int);
 	void Change(int, char);
 	void Delete(int);
 	void Print();
 	char Show(int);
-	void Information();
 	int Size();
 private:
 	char *string_;
