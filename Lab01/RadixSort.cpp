@@ -1,12 +1,9 @@
-/*
-#ifndef RADIXSORT
-#define RADIXSORT
-
 #include <iostream>
-#include "TVector2.cpp"
-#include "TString2.cpp"
+#include "TVector.h"
+#include "TString.h"
+#include "RadixSort.h"
 
-const int MAX_NUMBER = 16;
+
 
 int CharValue(char c) {
 	if (c >= '0' && c <= '9') {
@@ -49,6 +46,3 @@ void CountingSort(TVector& arr, int position) {
 	
 
 }
-
-#endif // !RADIXSORT
-*/
