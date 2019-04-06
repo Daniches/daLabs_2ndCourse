@@ -4,7 +4,7 @@
 #include"RadixSort.h"
 
 int main() {
-	TVector lol;
+	TVector dataArray;
 
 	char c;
 	bool isMD5 = true;
@@ -17,7 +17,7 @@ int main() {
 
 		if (c == BREAK_CODE || c== EOF) {
 			if (pair.key->Size() > 0) {
-				lol.PushBack(pair);
+				dataArray.PushBack(pair);
 			}
 			break;
 		}
@@ -27,7 +27,7 @@ int main() {
 		}
 		if (c == '\n') {
 			if (pair.key->Size() > 0) {
-				lol.PushBack(pair);
+				dataArray.PushBack(pair);
 			}
 			pair.key = new TString();
 			pair.value = new TString();
@@ -40,15 +40,15 @@ int main() {
 		}
 		else {
 			pair.value->PushBack(c);
-		}
+		} 
 	};
 
-	RadixSort(lol);
+	RadixSort(dataArray);
 
-	for (int i = 0; i < lol.Size(); i++) {
-		lol[i].key->Print();
+	for (int i = 0; i < dataArray.Size(); i++) {
+		dataArray[i].key->Print();
 		std::cout << '\t';
-		lol[i].value->Print();
+		dataArray[i].value->Print();
 		std::cout << '\n';
 	}
 
