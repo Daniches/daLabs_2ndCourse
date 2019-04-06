@@ -19,6 +19,7 @@ int CharValue(char c) {
 }
  
 void CountingSort(TVector& arr, int pos) {
+
 	TVector tmpArr(arr.Size());
 
 	int count[MAX_NUMBER + 1];
@@ -42,10 +43,14 @@ void CountingSort(TVector& arr, int pos) {
 	for (int i = 0; i < arr.Size(); i++) {
 		arr[i] = tmpArr[i];
 	}
+
 }
 
 void RadixSort(TVector& arr) {
-	for (int i = arr[0].key->Size() - 1; i >= 0; i--) {
-		CountingSort(arr, i);
+	if (arr.Size()>1){
+		for (int i = arr[0].key->Size() - 1; i >= 0; i--) {
+			CountingSort(arr, i);
+		}
 	}
+	
 }
