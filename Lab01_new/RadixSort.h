@@ -9,4 +9,4 @@ int CharValue(const char);
 void CountingSort(TVector&, int);
 void RadixSort(TVector&);
 
-#endif/ !RADIXSORT
+#endif// !RADIXSORT

@@ -54,6 +54,7 @@ bool TVector::PushBack(const data val) {
 
 	array_[size_] = val;
 	size_++;
+	return true;
 }
 
 int TVector::Size() {
