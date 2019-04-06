@@ -16,6 +16,7 @@ struct data {
 class TVector {
 public:
 	TVector();
+	TVector(int);
 	bool ReserveDouble();
 	bool PushBack(const data);
 	data& operator[](int);

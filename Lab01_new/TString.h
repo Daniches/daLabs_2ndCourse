@@ -14,6 +14,7 @@ public:
 	bool PushBack(const char);
 	int Size();
 	void Print();
+	char Element(int);
 	~TString();
 private:
 	char *string_;

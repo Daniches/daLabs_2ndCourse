@@ -1,6 +1,7 @@
 #include<iostream>
 #include"TString.h"
 #include"TVector.h"
+#include"RadixSort.h"
 
 int main() {
 	TVector lol;
@@ -42,11 +43,14 @@ int main() {
 		}
 	};
 
-	std::cout << lol.Size() << std::endl;
+	RadixSort(lol);
+
 	for (int i = 0; i < lol.Size(); i++) {
 		lol[i].key->Print();
 		std::cout << '\t';
 		lol[i].value->Print();
 		std::cout << '\n';
 	}
+
+
 }

@@ -12,6 +12,20 @@ TVector::TVector() {
 	}
 }
 
+TVector::TVector(int given_size) {
+	array_ = new data[DEFAULT_VECTOR_SIZE];
+	sizeReserved_ = DEFAULT_VECTOR_SIZE;
+	size_ = given_size;
+	while (sizeReserved_ < given_size) {
+		ReserveDouble();
+	}
+	if (array_ == NULL) {
+		std::cout << " Memory error";
+		sizeReserved_ = 0;
+	}
+}
+
+
 bool TVector::ReserveDouble() {
 	data *new_array = new data[sizeReserved_*VECTOR_GROW];
 	if (new_array == NULL) {

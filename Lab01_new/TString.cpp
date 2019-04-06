@@ -53,6 +53,10 @@ void TString::Print() {
 	}
 }
 
+char TString::Element(int pos) {
+	return string_[pos];
+}
+
 TString::~TString() {
 	delete[] string_;
 }

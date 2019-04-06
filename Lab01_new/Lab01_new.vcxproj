@@ -118,11 +118,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Lab01.cpp" />
+    <ClCompile Include="RadixSort.cpp" />
     <ClCompile Include="TString.cpp" />
     <ClCompile Include="TVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RadixSort.h" />
     <ClInclude Include="TString.h" />
     <ClInclude Include="TVector.h" />
   </ItemGroup>
