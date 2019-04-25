@@ -1,4 +1,5 @@
 #include<iostream>
+//#include<vld.h>
 #include"TString.h"
 #include"TVector.h"
 #include"RadixSort.h"
@@ -19,6 +20,10 @@ int main() {
 			if (pair.key->Size() > 0) {
 				dataArray.PushBack(pair);
 			}
+			else {
+				delete pair.key;
+				delete pair.value;
+			}
 			break;
 		}
 		if (c == '\t') {
@@ -28,9 +33,10 @@ int main() {
 		if (c == '\n') {
 			if (pair.key->Size() > 0) {
 				dataArray.PushBack(pair);
+
+				pair.key = new TString();
+				pair.value = new TString();
 			}
-			pair.key = new TString();
-			pair.value = new TString();
 			
 			isMD5 = true;
 			continue;
@@ -51,6 +57,5 @@ int main() {
 		dataArray[i].value->Print();
 		std::cout << '\n';
 	}
-
 
 }

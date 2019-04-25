@@ -4,7 +4,7 @@
 #include <iostream>
 #include "TString.h"
 
-const int DEFAULT_VECTOR_SIZE = 4;
+const int DEFAULT_VECTOR_SIZE = 16;
 const int VECTOR_GROW = 2;
 
 struct data {

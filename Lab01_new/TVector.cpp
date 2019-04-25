@@ -13,12 +13,13 @@ TVector::TVector() {
 }
 
 TVector::TVector(int given_size) {
-	array_ = new data[DEFAULT_VECTOR_SIZE];
-	sizeReserved_ = DEFAULT_VECTOR_SIZE;
-	size_ = given_size;
-	while (sizeReserved_ < given_size) {
-		ReserveDouble();
+	int new_size = DEFAULT_VECTOR_SIZE;
+	while (new_size < given_size) {
+		new_size *= 2;
 	}
+	array_ = new data[new_size];
+	sizeReserved_ = new_size;
+	size_ = given_size;
 	if (array_ == NULL) {
 		std::cout << " Memory error";
 		sizeReserved_ = 0;
@@ -51,7 +52,7 @@ bool TVector::PushBack(const data val) {
 			return false;
 		}
 	}
-
+		
 	array_[size_] = val;
 	size_++;
 	return true;
